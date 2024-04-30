@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus_selection || Fault_Analysis</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../css/busselection.css">
+</head>
+<body>
+  <section class="center">
+    <img src="images/bulb.png" width="200px" alt="">
+    <h1 class="auto"> 
+    SELECT WHERE THE FAULT IMPEDANCE IS PLACED:
+    </h1>
+    <br>
+    <div class="but">
+      <button  id="loaderBtn" type="button" class="btn btn-primary btn-lg my-2">BUS 3</button>
+    <br>
+      <button  id="loaderBtn1" type="button" class="btn btn-danger btn-lg my-2">BUS 2</button>
+    <br>
+      <button   id="loaderBtn2" type="button" class="btn btn-info btn-lg my-2">BUS 1</button>
+    <br>
+    </div>
+  </section>
+  <img id="loader" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/78914f4d-b8bd-4310-9901-246f5e052379/d30k3ak-689c3224-aebc-4b44-b1fa-0e3f30901531.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzc4OTE0ZjRkLWI4YmQtNDMxMC05OTAxLTI0NmY1ZTA1MjM3OVwvZDMwazNhay02ODljMzIyNC1hZWJjLTRiNDQtYjFmYS0wZTNmMzA5MDE1MzEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.I4yenFaz2HA3BPgQzBvXFHtAwhNe0V4HOjEzucVppeU" alt="Loading..."  />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script>
+    document.getElementById('loaderBtn').addEventListener('click', function() {
+      // Display loader
+      document.getElementById('loader').style.display = 'block';
+
+      // Simulate a 3-second delay using setTimeout
+      setTimeout(function() {
+          // After 3 seconds, hide the loader and navigate to the specified address
+          document.getElementById('loader').style.display = 'none';
+          window.location.href = 'bus3.html';
+      }, 3000);
+  });
+
+  document.getElementById('loaderBtn1').addEventListener('click', function() {
+    // Display loader
+    document.getElementById('loader').style.display = 'block';
+
+    // Simulate a 3-second delay using setTimeout
+    setTimeout(function() {
+        // After 3 seconds, hide the loader and navigate to the specified address
+        document.getElementById('loader').style.display = 'none';
+        window.location.href = 'bus2.html';
+    }, 3000);
+});
+document.getElementById('loaderBtn2').addEventListener('click', function() {
+  // Display loader
+  document.getElementById('loader').style.display = 'block';
+
+  // Simulate a 3-second delay using setTimeout
+  setTimeout(function() {
+      // After 3 seconds, hide the loader and navigate to the specified address
+      document.getElementById('loader').style.display = 'none';
+      window.location.href = 'bus1.html';
+  }, 3000);
+});
+  </script>
+</body>
+</html>

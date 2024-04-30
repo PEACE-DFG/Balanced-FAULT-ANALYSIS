@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus 3 || Analysis</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/bus3.css">
+</head>
+<body>
+  
+  <section class="all">
+    <img src="../images/EQUATION.png" class="img-fluid" alt="">
+    <div class="m-auto text-center ">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Click Here
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="formData">
+                <div class="mb-3">
+                  <label for="A" class="form-label"><b>A</b></label>
+                  <input type="text" class="form-control" name="A" id="A" placeholder="Enter Parameter A">
+                </div>
+                <div class="mb-3">
+                  <label for="B" class="form-label"><b>B</b></label>
+                  <input type="text" class="form-control" name="B" id="B" placeholder="Enter Parameter B">
+                </div>
+                <div class="mb-3">
+                  <label for="C" class="form-label"><b>C</b></label>
+                  <input type="text" class="form-control" name="C" id="C" placeholder="Enter Parameter C">
+                </div>
+                <div class="mb-3">
+                  <label for="D" class="form-label"><b>D</b></label>
+                  <input type="text" class="form-control" name="D" id="D" placeholder="Enter Parameter D">
+                </div>
+                <div class="mb-3">
+                  <label for="E" class="form-label"><b>E</b></label>
+                  <input type="text" class="form-control" name="E" id="E" placeholder="Enter Parameter E">
+                </div>
+                <div class="mb-3">
+                  <label for="Zf" class="form-label"><b>Fault Impedance</b></label>
+                  <input type="text" class="form-control" name="Zf" id="Zf" placeholder="Enter Parameter Zf">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Enter</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('formData');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const jsonData = {};
+        formData.forEach((value, key) => {
+          if (/^-?\d*\.?\d*i$/i.test(value)) {
+            const imagPart = parseFloat(value.replace(/i$/, ''));
+            const realPart = (imagPart === 0) ? 0 : undefined; // Set real part to 0 if it's purely imaginary
+            jsonData[key] = { real: realPart, imag: imagPart };
+          } else {
+            jsonData[key] = value;
+          }
+        });
+  
+        try {
+          localStorage.setItem('formData', JSON.stringify(jsonData));
+  
+          const response = await fetch('/collect_data', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonData)
+          });
+  
+          if (response.ok) {
+            const result = await response.json();
+            console.log(result);
+          } else {
+            console.error('Failed to send data');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      });
+    });
+  </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power_Fault || Analysis</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;800;900&family=Poppins:wght@300&family=Roboto&family=Rubik+Doodle+Shadow&family=Rubik+Scribble&family=Sixtyfour&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <section class="center">
+    <img src="images/bulb.png" width="200px" alt="">
+    <h1 class="auto">
+      POWER
+    </h1>
+    <br>
+    <div class="but">
+      <button id="loaderBtn" type="button" class="btn btn-primary btn-lg">PROCEED TO ANALYSIS</button>
+    </div>
+  </section>
+  <img id="loader"
+    src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/78914f4d-b8bd-4310-9901-246f5e052379/d30k3ak-689c3224-aebc-4b44-b1fa-0e3f30901531.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzc4OTE0ZjRkLWI4YmQtNDMxMC05OTAxLTI0NmY1ZTA1MjM3OVwvZDMwazNhay02ODljMzIyNC1hZWJjLTRiNDQtYjFmYS0wZTNmMzA5MDE1MzEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.I4yenFaz2HA3BPgQzBvXFHtAwhNe0V4HOjEzucVppeU"
+    alt="Loading..." />
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <script>
+    var typed = new Typed(".auto", {
+      strings: ["POWER", "BALANCED", "FAULT", "ANALYSIS"],
+      typeSpeed: 140,
+      backSpeed: 100,
+      loop: true,
+    })
+    document.getElementById('loaderBtn').addEventListener('click', function () {
+      // Display loader
+      document.getElementById('loader').style.display = 'block';
+
+      // Simulate a 3-second delay using setTimeout
+      setTimeout(function () {
+        // After 3 seconds, hide the loader and navigate to the specified address
+        document.getElementById('loader').style.display = 'none';
+        window.location.href = 'pages/bus_selection.html';
+      }, 3000);
+    });
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
